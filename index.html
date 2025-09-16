@@ -3055,10 +3055,49 @@
             document.getElementById("contactForm").reset();
           });
       });
+      // Form submission
+      document
+        .getElementById("serviceForm")
+        .addEventListener("submit", function (e) {
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
 
+          // Change button text to show loading
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+          submitBtn.disabled = true;
+
+          // Let the form submit naturally to Formspree
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        });
+
+
+        document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+
+          // Change button text to show loading
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+          submitBtn.disabled = true;
+
+          // Let the form submit naturally to Formspree
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        });
+
+      
       window.addEventListener("scroll", handleScroll);
     </script>
   </body>
 </html>
+
 
 
