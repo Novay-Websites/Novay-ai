@@ -51,7 +51,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.6); /* غيّر من 0.3 إلى 0.6 */
+        background: rgba(0, 0, 0, 0.3);
         z-index: -1;
       }
 
@@ -151,6 +151,7 @@
         backdrop-filter: blur(10px);
       }
 
+      /* للتأكد من ظهور السطرين منفصلين */
       .hero h1 {
         font-size: inherit;
         line-height: 1.2;
@@ -178,6 +179,7 @@
         white-space: nowrap;
       }
 
+      /* الشاشات المتوسطة */
       @media (max-width: 768px) {
         .hero h1 .first-line {
           font-size: clamp(1.2rem, 5vw, 2.2rem);
@@ -188,6 +190,7 @@
         }
       }
 
+      /* الشاشات الصغيرة */
       @media (max-width: 480px) {
         .hero h1 .first-line {
           font-size: clamp(1rem, 6vw, 1.8rem);
@@ -200,6 +203,7 @@
         }
       }
 
+      /* الشاشات الصغيرة جداً */
       @media (max-width: 320px) {
         .hero h1 .first-line {
           font-size: 1.1rem;
@@ -227,19 +231,16 @@
         margin: 30px 0;
       }
 
-      .cta-image-en,
-      .cta-image-ar {
+      .cta-image {
         width: 100vw;
         height: auto;
         margin: 20px 0;
         position: relative;
-        left: 50%;
-        right: 50%;
+        left: 0%;
+        right: 0%;
         margin-left: -50vw;
         margin-right: -50vw;
         max-width: 100vw;
-        object-fit: cover; /* إضافة هذا */
-        display: block; /* تأكد من العرض */
       }
 
       .cta-brand {
@@ -264,6 +265,7 @@
         text-align: center;
         overflow: hidden;
         width: 100%;
+        background: rgba(26, 13, 46, 0.3);
         backdrop-filter: blur(10px);
       }
 
@@ -353,11 +355,9 @@
         height: 100%;
       }
 
-      /* إصلاح ترتيب العناصر في النسخة العربية */
       [dir="rtl"] .product-card {
-        direction: rtl;
-        text-align: right;
         align-items: flex-end;
+        text-align: right;
       }
 
       .product-card:hover {
@@ -380,6 +380,10 @@
         align-self: flex-start;
       }
 
+      [dir="rtl"] .product-icon {
+        align-self: flex-end;
+      }
+
       .product-icon img {
         width: 100%;
         height: 100%;
@@ -392,6 +396,10 @@
         margin-bottom: 15px;
         color: var(--text-white);
         align-self: flex-start;
+      }
+
+      [dir="rtl"] .product-title {
+        align-self: flex-end;
       }
 
       .product-description {
@@ -414,6 +422,7 @@
 
       .story {
         padding: 80px 0;
+        background: rgba(26, 13, 46, 0.3);
         backdrop-filter: blur(10px);
       }
 
@@ -422,20 +431,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 50px;
         align-items: center;
-      }
-
-      [dir="rtl"] .story-content {
-        grid-template-columns: 1fr 1fr;
-        direction: rtl;
-      }
-
-      [dir="rtl"] .story-text {
-        order: 1;
-        text-align: right;
-      }
-
-      [dir="rtl"] .story-image {
-        order: 2;
       }
 
       .story-text h2 {
@@ -450,11 +445,6 @@
         line-height: 1.6;
         margin-bottom: 15px;
         text-align: justify;
-      }
-
-      [dir="rtl"] .story-text p {
-        text-align: right;
-        direction: rtl;
       }
 
       .story-video {
@@ -506,7 +496,6 @@
 
       [dir="rtl"] .value-card {
         text-align: right;
-        direction: rtl;
       }
 
       .value-card:hover {
@@ -552,13 +541,9 @@
         text-align: justify;
       }
 
-      [dir="rtl"] .value-description {
-        text-align: right;
-        direction: rtl;
-      }
-
       .faq {
         padding: 80px 0;
+        background: rgba(26, 13, 46, 0.3);
         backdrop-filter: blur(10px);
       }
 
@@ -599,11 +584,6 @@
         font-size: 14px;
         display: none;
         text-align: justify;
-      }
-
-      [dir="rtl"] .faq-answer {
-        text-align: right;
-        direction: rtl;
       }
 
       .faq-answer.active {
@@ -727,11 +707,6 @@
         font-size: 14px;
         line-height: 1.6;
         text-align: justify;
-      }
-
-      [dir="rtl"] .contact-form-desc {
-        text-align: right;
-        direction: rtl;
       }
 
       .form-group {
@@ -892,63 +867,6 @@
       }
 
       .floating-btn {
-        position: relative;
-        overflow: visible;
-      }
-
-      .floating-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: inherit;
-        z-index: -1;
-        transition: all 0.3s ease;
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        70% {
-          transform: scale(1.3);
-          opacity: 0;
-        }
-        100% {
-          transform: scale(1.4);
-          opacity: 0;
-        }
-      }
-
-      .floating-btn:hover::before {
-        animation: none;
-      }
-
-      .btn-tooltip {
-        position: absolute;
-        right: 70px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(26, 13, 46, 0.95);
-        color: white;
-        padding: 8px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-        white-space: nowrap;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(105, 44, 146, 0.3);
-        backdrop-filter: blur(10px);
-      }
-
-      .floating-btn {
         width: 60px;
         height: 60px;
         border: none;
@@ -1046,11 +964,6 @@
         margin-bottom: 20px;
       }
 
-      [dir="rtl"] .footer-company-info .company-description {
-        text-align: right;
-        direction: rtl;
-      }
-
       .footer-contact-info {
         margin-top: 20px;
       }
@@ -1062,10 +975,6 @@
         display: flex;
         align-items: center;
         gap: 8px;
-      }
-
-      [dir="rtl"] .footer-contact-info p {
-        direction: rtl;
       }
 
       .footer-contact-info i {
@@ -1082,13 +991,10 @@
         font-size: 14px;
         margin-bottom: 5px;
       }
+
       .working-hours p {
         color: var(--text-gray);
         font-size: 13px;
-      }
-
-      [dir="rtl"] .working-hours p {
-        direction: rtl;
       }
 
       .social-links {
@@ -1202,7 +1108,7 @@
       }
 
       .modal-content {
-        background: rgba(26, 13, 46, 0.95);
+        background: rgba(26, 13, 46, 0.9);
         margin: 3% auto;
         padding: 25px;
         border-radius: 15px;
@@ -1229,12 +1135,6 @@
         z-index: 1;
       }
 
-      [dir="rtl"] .close {
-        float: left;
-        right: auto;
-        left: 12px;
-      }
-
       .close:hover {
         color: var(--accent-purple);
       }
@@ -1247,77 +1147,6 @@
         padding-top: 5px;
       }
 
-      /* Dark Mode Support */
-      @media (prefers-color-scheme: dark) {
-        .modal-content {
-          background: rgba(26, 13, 46, 0.98);
-          border: 2px solid rgba(105, 44, 146, 0.4);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-          background: rgba(0, 0, 0, 0.7);
-          border: 2px solid rgba(105, 44, 146, 0.4);
-        }
-
-        .contact-form,
-        .contact-info {
-          background: rgba(26, 13, 46, 0.6);
-          border: 2px solid rgba(105, 44, 146, 0.2);
-        }
-
-        .product-card {
-          background: rgba(26, 13, 46, 0.6);
-          border: 2px solid rgba(105, 44, 146, 0.2);
-        }
-
-        .value-card {
-          background: rgba(26, 13, 46, 0.5);
-          border: 2px solid rgba(105, 44, 146, 0.2);
-        }
-
-        .faq-item {
-          background: rgba(0, 0, 0, 0.6);
-          border: 2px solid rgba(105, 44, 146, 0.2);
-        }
-      }
-
-      /* Light Mode Support */
-      /* @media (prefers-color-scheme: light) {
-        body::before {
-          background: rgba(0, 0, 0, 0.4);
-        } */
-
-      @media (prefers-color-scheme: light) {
-        .hero h1 {
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-description {
-          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        }
-
-        .section-title,
-        .nav-links a,
-        .value-title,
-        .product-title {
-          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-      }
-
-      .modal-content {
-        background: rgba(26, 13, 46, 0.95);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        background: rgba(26, 13, 46, 0.9);
-        color: var(--text-white);
-      }
-
       @media (min-width: 1200px) {
         .cta-brand-logo {
           width: 350px;
@@ -1326,31 +1155,118 @@
       }
 
       @media (max-width: 968px) {
-        [dir="rtl"] .product-card {
+        .story-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 30px;
+        }
+
+        .companies-grid {
+          gap: 20px;
+        }
+
+        .company-logo {
+          height: 120px;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cta-brand-logo {
+          width: 250px;
+          height: 78px;
+        }
+
+        .hero {
+          padding-top: 90px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .footer-company-info {
+          grid-column: 1 / -1;
+          margin-bottom: 20px;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .final-cta .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 20px;
+        }
+
+        .final-cta-content {
+          text-align: center;
+        }
+
+        [dir="rtl"] .final-cta-content {
+          text-align: center;
+        }
+
+        .value-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        [dir="rtl"] .value-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        [dir="ltr"] .value-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .value-icon {
+          margin: 0 auto 15px;
+        }
+
+        [dir="rtl"] .value-icon {
+          margin: 0 auto 15px;
+        }
+
+        [dir="ltr"] .value-icon {
+          margin: 0 auto 15px;
+        }
+
+        .product-card {
+          flex-direction: column;
           align-items: center;
           text-align: center;
+        }
+
+        [dir="rtl"] .product-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .product-icon {
+          align-self: center;
         }
 
         [dir="rtl"] .product-icon {
           align-self: center;
         }
 
-        [dir="rtl"] .product-title {
-          text-align: center;
+        .product-title {
           align-self: center;
         }
 
-        [dir="rtl"] .product-description {
-          text-align: center;
-          direction: ltr; /* عودة للوسط في الشاشات الصغيرة */
-        }
-      }
-
-      @media (max-width: 768px) {
-        [dir="rtl"] .product-card {
-          direction: ltr; /* عودة للوسط تماماً في الموبايل */
-          align-items: center;
-          text-align: center;
+        [dir="rtl"] .product-title {
+          align-self: center;
         }
       }
 
@@ -1419,10 +1335,6 @@
           justify-content: flex-start;
         }
 
-        [dir="rtl"] .social-links {
-          justify-content: flex-end;
-        }
-
         .hero-content {
           padding: 30px 20px;
         }
@@ -1458,34 +1370,21 @@
           flex-direction: column;
           align-items: center;
           text-align: center;
-          direction: ltr;
         }
 
-        [dir="rtl"] .product-icon {
-          align-self: flex-end;
-          margin-left: 0;
-          margin-right: 0;
-        }
-
-        [dir="rtl"] .product-title {
-          text-align: right;
-          align-self: flex-end;
-        }
-
-        [dir="rtl"] .product-description {
-          text-align: right;
-          direction: rtl;
-        }
-
-        [dir="rtl"] .product-buttons {
-          direction: rtl;
-          justify-content: flex-start;
-        }
         .product-icon {
           align-self: center;
         }
 
+        [dir="rtl"] .product-icon {
+          align-self: center;
+        }
+
         .product-title {
+          align-self: center;
+        }
+
+        [dir="rtl"] .product-title {
           align-self: center;
         }
       }
@@ -1510,94 +1409,6 @@
         [dir="rtl"] .floating-buttons {
           right: auto;
           left: 10px;
-        }
-      }
-
-      [dir="rtl"] .products-grid {
-        direction: rtl;
-      }
-
-      /* أضف classes مختلفة للصورتين */
-      .cta-image-en {
-        display: block;
-      }
-
-      .cta-image-ar {
-        display: none;
-      }
-
-      [dir="rtl"] .cta-image-en {
-        display: none;
-      }
-
-      [dir="rtl"] .cta-image-ar {
-        display: block;
-      }
-
-      @media (max-width: 968px) {
-        .story-content {
-          grid-template-columns: 1fr;
-          text-align: center;
-          gap: 30px;
-        }
-
-        [dir="rtl"] .story-content {
-          grid-template-columns: 1fr;
-        }
-
-        [dir="rtl"] .story-text {
-          order: unset;
-          text-align: center;
-        }
-
-        [dir="rtl"] .story-image {
-          order: unset;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .story {
-          padding: 60px 0; /* تقليل المسافات */
-        }
-
-        .story-text h2 {
-          font-size: clamp(1.5rem, 4vw, 2rem); /* تصغير حجم العنوان */
-          margin-bottom: 20px;
-        }
-
-        .story-text p {
-          font-size: 14px; /* تصغير حجم النص */
-          text-align: center; /* جعل النص في الوسط للجوالات */
-          margin-bottom: 15px;
-        }
-
-        .story-video {
-          height: 200px !important; /* تصغير ارتفاع الفيديو */
-          margin: 20px 0;
-        }
-
-        .story-image {
-          max-width: 100%;
-          overflow: hidden;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .story {
-          padding: 40px 0;
-        }
-
-        .story-video {
-          height: 180px !important; /* ارتفاع أصغر للشاشات الصغيرة جداً */
-        }
-
-        .story-text h2 {
-          font-size: 1.3rem;
-        }
-
-        .story-text p {
-          font-size: 13px;
-          line-height: 1.5;
         }
       }
     </style>
@@ -1786,7 +1597,6 @@
             >
           </span>
         </h1>
-        <br />
         <p class="hero-description fade-in">
           <span
             data-en="Novay AI was founded in 2019 by a team of AI experts and business innovators with one vision: to make artificial intelligence accessible and profitable for every business. We recognized the gap between advanced AI technology and real business outcomes, and set out to close it."
@@ -1799,23 +1609,10 @@
           >
         </p>
         <div class="cta-section fade-in">
-          <!-- <img
+          <img
             src="image/image-increase.PNG"
             alt="Increase profits and reduce costs"
             class="cta-image"
-          /> -->
-
-          <img
-            src="image/image-increase.PNG"
-            alt="Increase profits and reduce costs"
-            class="cta-image-en"
-          />
-
-          <img
-            src="image/image-increase.PNG"
-            alt="زيادة الأرباح وخفض التكاليف"
-            class="cta-image-ar"
-            style="transform: scaleX(-1)"
           />
           <div class="cta-brand">
             <img
@@ -2217,17 +2014,12 @@
             </p>
           </div>
           <div class="story-image fade-in floating">
-            <div class="story-video" style="height: 300px">
-              <img
-                src="image/novay-ai.gif"
-                alt="Novay AI Story"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  object-fit: contain;
-                  border-radius: 15px;
-                "
-              />
+            <div class="story-video">
+              <iframe
+                src="https://www.youtube.com/embed/ii2evc01kb4"
+                title="Novay AI Story"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
         </div>
@@ -2676,7 +2468,7 @@
                 data-ar="املأ النموذج أدناه وسنتواصل معك في أقرب وقت ممكن لتقديم أفضل الحلول المناسبة لاحتياجات عملك وتطوير خدمة العملاء لديك"
                 >Fill out the form below and we will contact you as soon as
                 possible to provide the best solutions suitable for your
-                business and develop your customer service</span
+                business needs and develop your customer service</span
               >
             </p>
             <form id="contactForm">
@@ -2807,7 +2599,6 @@
         aria-label="WhatsApp"
       >
         <i class="fab fa-whatsapp"></i>
-        <span class="btn-tooltip">WhatsApp</span>
       </a>
       <a
         href="tel:+966590086017"
@@ -2815,7 +2606,6 @@
         aria-label="Call"
       >
         <i class="fas fa-phone"></i>
-        <span class="btn-tooltip">اتصل بنا</span>
       </a>
     </div>
 
