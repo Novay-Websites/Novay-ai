@@ -421,6 +421,7 @@
         margin: 0 auto;
       }
 
+      /* Grid Layout للمنتجات */
       .products-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -428,6 +429,7 @@
         margin-top: 50px;
       }
 
+      /* تصميم كارت المنتج الأساسي */
       .product-card {
         background: rgba(26, 13, 46, 0.4);
         border: 1px solid rgba(105, 44, 146, 0.1);
@@ -442,12 +444,12 @@
         height: 100%;
       }
 
+      /* للغة العربية - عكس الاتجاه */
       [dir="rtl"] .product-card {
         direction: rtl;
         text-align: right;
         align-items: flex-end;
       }
-
       .product-card:hover {
         transform: translateY(-5px);
         border-color: rgba(105, 44, 146, 0.3);
@@ -455,6 +457,7 @@
         box-shadow: 0 10px 30px rgba(105, 44, 146, 0.2);
       }
 
+      /* أيقونة المنتج */
       .product-icon {
         width: 80px;
         height: 80px;
@@ -468,16 +471,13 @@
         align-self: flex-start;
       }
 
-      [dir="rtl"] .product-icon {
-        align-self: flex-end;
-      }
-
       .product-icon img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
 
+      /* عنوان المنتج */
       .product-title {
         font-size: 20px;
         font-weight: bold;
@@ -486,10 +486,7 @@
         align-self: flex-start;
       }
 
-      [dir="rtl"] .product-title {
-        align-self: flex-end;
-      }
-
+      /* وصف المنتج */
       .product-description {
         color: var(--text-gray);
         line-height: 1.6;
@@ -500,11 +497,7 @@
         align-self: stretch;
       }
 
-      [dir="rtl"] .product-description {
-        text-align: right;
-        direction: rtl;
-      }
-
+      /* أزرار المنتج */
       .product-buttons {
         display: flex;
         gap: 12px;
@@ -515,6 +508,139 @@
 
       [dir="rtl"] .product-buttons {
         direction: rtl;
+      }
+
+      /* الشاشات الكبيرة - 1200px وأكثر */
+      @media (min-width: 1200px) {
+        .products-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+
+        .product-card {
+          padding: 40px 35px;
+        }
+
+        .product-icon {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      /* الأجهزة اللوحية والشاشات المتوسطة - 969px إلى 1199px */
+      @media (min-width: 969px) and (max-width: 1199px) {
+        .products-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 25px;
+        }
+
+        .product-card {
+          padding: 25px 20px;
+        }
+
+        .product-icon {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      /* نقطة التحول للتصميم المختلط - 968px وأقل */
+      @media (max-width: 968px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        /* التصميم المختلط للعربية فقط على هذا الحجم */
+        [dir="rtl"] .product-card {
+          align-items: center;
+          text-align: center;
+        }
+
+        [dir="rtl"] .product-icon {
+          align-self: center;
+        }
+
+        [dir="rtl"] .product-title {
+          text-align: center;
+          align-self: center;
+        }
+
+        [dir="rtl"] .product-description {
+          text-align: center;
+          direction: ltr;
+        }
+      }
+
+      /* الأجهزة اللوحية والهواتف - 768px وأقل */
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        /* تصميم عمودي متوسط للجميع */
+        .product-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 20px 15px;
+        }
+
+        [dir="rtl"] .product-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          direction: ltr; /* عودة للوسط */
+        }
+
+        .product-icon {
+          align-self: center;
+        }
+
+        .product-title {
+          align-self: center;
+          text-align: center;
+        }
+
+        .product-description {
+          text-align: center;
+        }
+
+        [dir="rtl"] .product-description {
+          text-align: center;
+          direction: ltr;
+        }
+
+        .product-buttons {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        [dir="rtl"] .product-buttons {
+          direction: ltr;
+        }
+      }
+
+      /* الهواتف المحمولة الصغيرة - 480px وأقل */
+      @media (max-width: 480px) {
+        .product-card {
+          padding: 15px 10px;
+        }
+
+        .product-icon {
+          width: 60px;
+          height: 60px;
+        }
+
+        .product-title {
+          font-size: 16px;
+        }
+
+        .product-description {
+          font-size: 12px;
+          line-height: 1.5;
+        }
       }
 
       .story {
@@ -1779,6 +1905,7 @@
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
       }
+
       /* تحديد موقع FastBots تحت الأزرار العائمة */
       [data-bot-id="cmfnkdbe406akqg1kfmemzma9"],
       iframe[src*="fastbots"],
@@ -1850,6 +1977,25 @@
       [dir="rtl"] #successModal .close {
         right: auto !important;
         left: 15px !important;
+      }
+
+      /* إضافة تأثير النبض لـ FastBots */
+      #chat-widget-push-to-talk {
+        animation: pulse 2s infinite;
+        background: inherit;
+      }
+
+      /* إضافة keyframes إذا لم تكن موجودة */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        70% {
+          transform: scale(1.3);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
     </style>
   </head>
@@ -3367,23 +3513,39 @@
     <script>
       let currentLang = "en";
 
-      // حل JavaScript نهائي لمشكلة iPhone
-      document.addEventListener("DOMContentLoaded", function () {
-        // تطبيق الخلفية الجديدة
-        document.body.style.background =
-          "linear-gradient(135deg, #2d1b4e 0%, #4a1a5c 25%, #6b2d7a 50%, #8b4298 75%, #b45bb8 100%)";
-        document.body.style.backgroundAttachment = "scroll";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundRepeat = "no-repeat";
+      // ================== UTILITY FUNCTIONS ==================
 
-        // حل خاص لـ iOS
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        if (isIOS) {
-          document.body.style.backgroundAttachment = "scroll";
-          document.body.style.webkitBackfaceVisibility = "hidden";
-          document.body.style.webkitTransform = "translate3d(0,0,0)";
+      // دالة تحديث محتوى النصوص
+      function updateContent(lang) {
+        const elements = document.querySelectorAll("[data-en][data-ar]");
+        elements.forEach((element) => {
+          if (lang === "ar") {
+            element.textContent = element.getAttribute("data-ar");
+          } else {
+            element.textContent = element.getAttribute("data-en");
+          }
+        });
+      }
+
+      // دالة كشف اللغة الحالية
+      function detectCurrentLanguage() {
+        // فحص متغير اللغة العام
+        if (typeof window.currentLang !== "undefined") {
+          return window.currentLang === "ar" ? "ar" : "en";
         }
-      });
+
+        // فحص اتجاه الصفحة
+        const dir = document.documentElement.dir || document.body.dir;
+        if (dir === "rtl") return "ar";
+
+        // فحص lang attribute
+        const lang = document.documentElement.lang || document.body.lang;
+        if (lang && lang.startsWith("ar")) return "ar";
+
+        return "en";
+      }
+
+      // ================== MODAL FUNCTIONS ==================
 
       function openModal() {
         document.getElementById("serviceModal").style.display = "block";
@@ -3395,6 +3557,28 @@
         document.body.style.overflow = "auto";
       }
 
+      function showSuccessModal() {
+        const modal = document.getElementById("successModal");
+        if (modal) {
+          modal.style.display = "block";
+          document.body.style.overflow = "hidden";
+
+          // إغلاق تلقائي بعد 5 ثواني
+          setTimeout(function () {
+            closeSuccessModal();
+          }, 5000);
+        }
+      }
+
+      function closeSuccessModal() {
+        const modal = document.getElementById("successModal");
+        if (modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      }
+
+      // إغلاق النوافذ عند النقر خارجها
       window.onclick = function (event) {
         const serviceModal = document.getElementById("serviceModal");
         const successModal = document.getElementById("successModal");
@@ -3406,6 +3590,8 @@
           closeSuccessModal();
         }
       };
+
+      // ================== LANGUAGE TOGGLE ==================
 
       function toggleLanguage() {
         const html = document.documentElement;
@@ -3424,7 +3610,16 @@
           langButton.textContent = "العربية";
           updateContent("en");
         }
+
+        // تحديث موقع FastBots بعد تغيير اللغة
+        setTimeout(function () {
+          if (typeof window.repositionFastBotsElements === "function") {
+            window.repositionFastBotsElements();
+          }
+        }, 300);
       }
+
+      // ================== UI FUNCTIONS ==================
 
       function toggleFAQ(element) {
         const answer = element.nextElementSibling;
@@ -3463,7 +3658,10 @@
       }
 
       function resetContactForm() {
-        document.getElementById("contactForm").reset();
+        const form = document.getElementById("contactForm");
+        if (form) {
+          form.reset();
+        }
       }
 
       function handleScroll() {
@@ -3478,9 +3676,271 @@
         });
       }
 
+      // ================== FASTBOTS CONTROL ==================
+
+      function repositionFastBotsElements() {
+        const currentLanguage = detectCurrentLanguage();
+        const isRTL = currentLanguage === "ar";
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+
+        console.log(
+          `Repositioning FastBots for: ${
+            isRTL ? "Arabic (RTL)" : "English (LTR)"
+          }`
+        );
+
+        // تحديث الزر الرئيسي
+        const chatButton = document.getElementById("chat-widget-push-to-talk");
+        if (chatButton) {
+          const horizontalDistance = isSmallMobile
+            ? "10px"
+            : isMobile
+            ? "15px"
+            : "20px";
+
+          if (isRTL) {
+            chatButton.style.left = horizontalDistance;
+            chatButton.style.right = "auto";
+          } else {
+            chatButton.style.right = horizontalDistance;
+            chatButton.style.left = "auto";
+          }
+          chatButton.style.bottom = "160px"; // فوق أزرار الاتصال
+        }
+
+        // تحديث رسالة الترحيب
+        const welcomeMessages = document.getElementById("welcomeMessages");
+        if (welcomeMessages) {
+          const horizontalDistance = isSmallMobile
+            ? "10px"
+            : isMobile
+            ? "15px"
+            : "20px";
+
+          if (isRTL) {
+            welcomeMessages.style.left = horizontalDistance;
+            welcomeMessages.style.right = "auto";
+            welcomeMessages.style.direction = "rtl";
+            welcomeMessages.style.textAlign = "right";
+          } else {
+            welcomeMessages.style.right = horizontalDistance;
+            welcomeMessages.style.left = "auto";
+            welcomeMessages.style.direction = "ltr";
+            welcomeMessages.style.textAlign = "left";
+          }
+          welcomeMessages.style.bottom = "230px";
+        }
+
+        // تحديث زر الإغلاق
+        const welcomeMessagesCross = document.getElementById(
+          "welcomeMessagesCross"
+        );
+        if (welcomeMessagesCross) {
+          if (isRTL) {
+            welcomeMessagesCross.style.left = "-13px";
+            welcomeMessagesCross.style.right = "auto";
+          } else {
+            welcomeMessagesCross.style.right = "-13px";
+            welcomeMessagesCross.style.left = "auto";
+          }
+        }
+
+        // تحديث iframe الدردشة
+        const chatIframes = document.querySelectorAll(
+          'iframe[src*="fastbots"], iframe[src*="embed"]'
+        );
+        chatIframes.forEach(function (chatIframe) {
+          if (isMobile) {
+            // على الموبايل: ملء الشاشة
+            chatIframe.style.left = "0px";
+            chatIframe.style.right = "0px";
+            chatIframe.style.width = "100vw";
+            chatIframe.style.bottom = "0px";
+          } else {
+            // على الكمبيوتر: حسب اللغة
+            if (isRTL) {
+              chatIframe.style.left = "20px";
+              chatIframe.style.right = "auto";
+            } else {
+              chatIframe.style.right = "20px";
+              chatIframe.style.left = "auto";
+            }
+            chatIframe.style.bottom = "230px";
+            chatIframe.style.width = "440px";
+          }
+        });
+      }
+
+      // ================== FORM HANDLERS ==================
+
+      async function handleServiceForm(e) {
+        e.preventDefault();
+
+        const requiredFields = this.querySelectorAll("[required]");
+        let isValid = true;
+
+        requiredFields.forEach((field) => {
+          if (!field.value.trim()) {
+            field.style.borderColor = "#ff4444";
+            field.style.borderWidth = "2px";
+            isValid = false;
+          } else {
+            field.style.borderColor = "rgba(105, 44, 146, 0.3)";
+            field.style.borderWidth = "1px";
+          }
+        });
+
+        if (!isValid) {
+          alert(
+            currentLang === "ar"
+              ? "يرجى ملء جميع الحقول المطلوبة"
+              : "Please fill all required fields"
+          );
+          return;
+        }
+
+        try {
+          const submitBtn = this.querySelector(".submit-btn");
+          const originalText = submitBtn.textContent;
+
+          submitBtn.textContent =
+            currentLang === "ar" ? "جاري الإرسال..." : "Sending...";
+          submitBtn.disabled = true;
+
+          const response = await fetch("https://formspree.io/f/mnnbkaqo", {
+            method: "POST",
+            body: new FormData(this),
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            closeModal();
+            showSuccessModal();
+            this.reset();
+          } else {
+            alert(
+              currentLang === "ar"
+                ? "حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى"
+                : "Error sending form. Please try again"
+            );
+          }
+
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        } catch (error) {
+          console.error("Error:", error);
+          alert(
+            currentLang === "ar"
+              ? "حدث خطأ في الاتصال. تأكد من اتصالك بالإنترنت"
+              : "Connection error. Please check your internet connection"
+          );
+        }
+      }
+
+      async function handleContactForm(e) {
+        e.preventDefault();
+
+        const requiredFields = this.querySelectorAll("[required]");
+        let isValid = true;
+
+        requiredFields.forEach((field) => {
+          let isEmpty = false;
+
+          if (field.tagName.toLowerCase() === "select") {
+            isEmpty =
+              !field.value || field.value === "" || field.selectedIndex === 0;
+          } else {
+            isEmpty = !field.value.trim();
+          }
+
+          if (isEmpty) {
+            field.style.borderColor = "#ff4444";
+            field.style.borderWidth = "2px";
+            isValid = false;
+          } else {
+            field.style.borderColor = "rgba(105, 44, 146, 0.3)";
+            field.style.borderWidth = "1px";
+          }
+        });
+
+        if (!isValid) {
+          alert(
+            currentLang === "ar"
+              ? "يرجى ملء جميع الحقول المطلوبة"
+              : "Please fill all required fields"
+          );
+          return;
+        }
+
+        try {
+          const submitBtn = this.querySelector(".submit-btn");
+          const originalText = submitBtn.textContent;
+
+          submitBtn.textContent =
+            currentLang === "ar" ? "جاري الإرسال..." : "Sending...";
+          submitBtn.disabled = true;
+
+          const response = await fetch("https://formspree.io/f/meolwyye", {
+            method: "POST",
+            body: new FormData(this),
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            showSuccessModal();
+            this.reset();
+
+            requiredFields.forEach((field) => {
+              field.style.borderColor = "rgba(105, 44, 146, 0.3)";
+              field.style.borderWidth = "1px";
+            });
+          } else {
+            alert(
+              currentLang === "ar"
+                ? "حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى."
+                : "Error sending message. Please try again."
+            );
+          }
+
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        } catch (error) {
+          console.error("Network error:", error);
+          alert(
+            currentLang === "ar"
+              ? "خطأ في الاتصال. يرجى التحقق من الإنترنت."
+              : "Connection error. Please check your internet."
+          );
+        }
+      }
+
+      // ================== INITIALIZATION ==================
+
       document.addEventListener("DOMContentLoaded", function () {
+        // تطبيق الخلفية للايفون
+        document.body.style.background =
+          "linear-gradient(135deg, #2d1b4e 0%, #4a1a5c 25%, #6b2d7a 50%, #8b4298 75%, #b45bb8 100%)";
+        document.body.style.backgroundAttachment = "scroll";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundRepeat = "no-repeat";
+
+        // حل خاص لـ iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+          document.body.style.backgroundAttachment = "scroll";
+          document.body.style.webkitBackfaceVisibility = "hidden";
+          document.body.style.webkitTransform = "translate3d(0,0,0)";
+        }
+
+        // تشغيل handleScroll
         handleScroll();
 
+        // إعداد navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -3499,205 +3959,130 @@
           });
         });
 
-        // Service Form - تحديث مع modal النجاح
-        document
-          .getElementById("serviceForm")
-          .addEventListener("submit", async function (e) {
-            e.preventDefault();
-
-            const requiredFields = this.querySelectorAll("[required]");
-            let isValid = true;
-
-            requiredFields.forEach((field) => {
-              if (!field.value.trim()) {
-                field.style.borderColor = "#ff4444";
-                field.style.borderWidth = "2px";
-                isValid = false;
-              } else {
-                field.style.borderColor = "rgba(105, 44, 146, 0.3)";
-                field.style.borderWidth = "1px";
-              }
-            });
-
-            if (!isValid) {
-              alert(
-                currentLang === "ar"
-                  ? "يرجى ملء جميع الحقول المطلوبة"
-                  : "Please fill all required fields"
-              );
-              return;
-            }
-
-            try {
-              const submitBtn = this.querySelector(".submit-btn");
-              const originalText = submitBtn.textContent;
-
-              submitBtn.textContent =
-                currentLang === "ar" ? "جاري الإرسال..." : "Sending...";
-              submitBtn.disabled = true;
-
-              const response = await fetch("https://formspree.io/f/mnnbkaqo", {
-                method: "POST",
-                body: new FormData(this),
-                headers: {
-                  Accept: "application/json",
-                },
-              });
-
-              if (response.ok) {
-                // إغلاق modal الطلب وإظهار modal النجاح
-                closeModal();
-                showSuccessModal();
-                this.reset();
-              } else {
-                alert(
-                  currentLang === "ar"
-                    ? "حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى"
-                    : "Error sending form. Please try again"
-                );
-              }
-
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-            } catch (error) {
-              console.error("Error:", error);
-              alert(
-                currentLang === "ar"
-                  ? "حدث خطأ في الاتصال. تأكد من اتصالك بالإنترنت"
-                  : "Connection error. Please check your internet connection"
-              );
-            }
-          });
-
-        // استبدل كامل كود Contact Form في JavaScript بهذا الكود:
-        // استبدل كود Contact Form validation بهذا:
-        document
-          .getElementById("contactForm")
-          .addEventListener("submit", async function (e) {
-            e.preventDefault();
-
-            // فحص الحقول المطلوبة مباشرة من الـ HTML
-            const requiredFields = this.querySelectorAll("[required]");
-            let isValid = true;
-            let emptyFields = [];
-
-            requiredFields.forEach((field) => {
-              let isEmpty = false;
-
-              if (field.tagName.toLowerCase() === "select") {
-                isEmpty =
-                  !field.value ||
-                  field.value === "" ||
-                  field.selectedIndex === 0;
-              } else {
-                isEmpty = !field.value.trim();
-              }
-
-              if (isEmpty) {
-                field.style.borderColor = "#ff4444";
-                field.style.borderWidth = "2px";
-                // الحصول على النص من label
-                const label =
-                  this.querySelector(`label[for="${field.id}"]`) ||
-                  this.querySelector(`label`).textContent.replace(" *", "");
-                emptyFields.push(label || field.name);
-                isValid = false;
-              } else {
-                field.style.borderColor = "rgba(105, 44, 146, 0.3)";
-                field.style.borderWidth = "1px";
-              }
-            });
-
-            if (!isValid) {
-              alert(
-                currentLang === "ar"
-                  ? `يرجى ملء جميع الحقول المطلوبة`
-                  : `Please fill all required fields`
-              );
-              return;
-            }
-
-            // إرسال البيانات
-            try {
-              const submitBtn = this.querySelector(".submit-btn");
-              const originalText = submitBtn.textContent;
-
-              submitBtn.textContent =
-                currentLang === "ar" ? "جاري الإرسال..." : "Sending...";
-              submitBtn.disabled = true;
-
-              const response = await fetch("https://formspree.io/f/meolwyye", {
-                method: "POST",
-                body: new FormData(this),
-                headers: {
-                  Accept: "application/json",
-                },
-              });
-
-              if (response.ok) {
-                // إظهار modal النجاح
-                showSuccessModal();
-                this.reset();
-
-                // إعادة تعيين ألوان الحدود
-                requiredFields.forEach((field) => {
-                  field.style.borderColor = "rgba(105, 44, 146, 0.3)";
-                  field.style.borderWidth = "1px";
-                });
-              } else {
-                alert(
-                  currentLang === "ar"
-                    ? "حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى."
-                    : "Error sending message. Please try again."
-                );
-              }
-
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-            } catch (error) {
-              console.error("Network error:", error);
-              alert(
-                currentLang === "ar"
-                  ? "خطأ في الاتصال. يرجى التحقق من الإنترنت."
-                  : "Connection error. Please check your internet."
-              );
-            }
-          });
-        function showSuccessModal() {
-          const modal = document.getElementById("successModal");
-          modal.style.display = "block";
-          document.body.style.overflow = "hidden";
-
-          // إغلاق تلقائي بعد 5 ثواني
-          setTimeout(function () {
-            closeSuccessModal();
-          }, 1000);
+        // إعداد النماذج
+        const serviceForm = document.getElementById("serviceForm");
+        if (serviceForm) {
+          serviceForm.addEventListener("submit", handleServiceForm);
         }
 
-        function closeSuccessModal() {
-          const modal = document.getElementById("successModal");
-          modal.style.display = "none";
-          document.body.style.overflow = "auto";
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", handleContactForm);
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-          // للزر X
-          const closeBtn = document.querySelector("#successModal .close");
-          if (closeBtn) {
-            closeBtn.addEventListener("click", closeSuccessModal);
-          }
+        // إعداد أزرار إغلاق النجاح
+        const closeBtn = document.querySelector("#successModal .close");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeSuccessModal);
+        }
 
-          // لزر إغلاق
-          const closeButton = document.querySelector("#successModal .btn");
-          if (closeButton) {
-            closeButton.addEventListener("click", closeSuccessModal);
-          }
-        });
+        const closeButton = document.querySelector("#successModal .btn");
+        if (closeButton) {
+          closeButton.addEventListener("click", closeSuccessModal);
+        }
+
+        // تهيئة FastBots
+        initializeFastBots();
       });
 
+      // مراقبة التمرير
       window.addEventListener("scroll", handleScroll);
+
+      // ================== FASTBOTS INITIALIZATION ==================
+
+      function initializeFastBots() {
+        // تحديث فوري
+        setTimeout(repositionFastBotsElements, 1000);
+
+        // فحص دوري للعناصر الجديدة
+        let attempts = 0;
+        const maxAttempts = 20;
+
+        const checkInterval = setInterval(function () {
+          attempts++;
+
+          const chatButton = document.getElementById(
+            "chat-widget-push-to-talk"
+          );
+          const welcomeMsg = document.getElementById("welcomeMessages");
+          const iframe = document.querySelector('iframe[src*="fastbots"]');
+
+          if (chatButton || welcomeMsg || iframe) {
+            repositionFastBotsElements();
+          }
+
+          if (attempts >= maxAttempts) {
+            clearInterval(checkInterval);
+          }
+        }, 1000);
+
+        // مراقبة تغيير اللغة
+        const observer = new MutationObserver(function (mutations) {
+          let shouldUpdate = false;
+
+          mutations.forEach(function (mutation) {
+            if (mutation.type === "attributes") {
+              const attrName = mutation.attributeName;
+              if (attrName === "dir" || attrName === "lang") {
+                shouldUpdate = true;
+              }
+            }
+
+            // مراقبة إضافة عناصر FastBots جديدة
+            if (mutation.type === "childList") {
+              mutation.addedNodes.forEach(function (node) {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                  if (
+                    node.id === "chat-widget-push-to-talk" ||
+                    node.id === "welcomeMessages" ||
+                    (node.tagName === "IFRAME" &&
+                      node.src &&
+                      node.src.includes("fastbots"))
+                  ) {
+                    shouldUpdate = true;
+                  }
+
+                  if (node.querySelector) {
+                    const fastbotsElements = node.querySelectorAll(
+                      '#chat-widget-push-to-talk, #welcomeMessages, iframe[src*="fastbots"]'
+                    );
+                    if (fastbotsElements.length > 0) {
+                      shouldUpdate = true;
+                    }
+                  }
+                }
+              });
+            }
+          });
+
+          if (shouldUpdate) {
+            setTimeout(repositionFastBotsElements, 500);
+          }
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["dir", "lang"],
+        });
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ["dir", "lang"],
+        });
+
+        // مراقبة تغيير حجم الشاشة
+        window.addEventListener("resize", function () {
+          setTimeout(repositionFastBotsElements, 200);
+        });
+      }
+
+      // جعل الدالة متاحة عالمياً
+      window.repositionFastBotsElements = repositionFastBotsElements;
     </script>
 
+    <!-- FastBots Script -->
     <script
       defer
       src="https://app.fastbots.ai/embed.js"
